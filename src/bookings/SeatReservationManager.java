@@ -1,4 +1,4 @@
-package bookings;
+
 
 public class SeatReservationManager {
 
@@ -9,13 +9,13 @@ public class SeatReservationManager {
         seatReservations = new Customer[rowToIndex(Seat.MAX_ROW) + 1]
                                        [numberToIndex(Seat.MAX_NUMBER) + 1];
     }
-
-    public boolean isReserved(Seat s) {
+    
+    public boolean isReserved(/*@non_null*/Seat s) {
         return seatReservations[rowToIndex(s.getRow())]
                                [numberToIndex(s.getNumber())] != null;
     }
-
-    public void reserve(Seat s, Customer c) 
+	
+    public void reserve(/*@non_null*/Seat s, Customer c) 
             throws ReservationException {
         if(isReserved(s)) {
             throw new ReservationException();
@@ -23,8 +23,8 @@ public class SeatReservationManager {
         seatReservations[rowToIndex(s.getRow())]
                         [numberToIndex(s.getNumber())] = c;
     }
-    
-    public void unreserve(Seat s)
+
+    public void unreserve(/*@non_null*/Seat s)
             throws ReservationException {
         if(!isReserved(s)) {
             throw new ReservationException();
@@ -85,17 +85,18 @@ public class SeatReservationManager {
     private static int rowToIndex(char row) {
         return row - Seat.MIN_ROW;
     }
-
-    private static int numberToIndex(int number) {
+    
+    private /*@ helper @*/ static int numberToIndex(int number) {
         return number - Seat.MIN_NUMBER;
     }
     
-    private static char indexToRow(int index) {
+    private /*@ helper @*/ static char indexToRow(int index) {
         return (char)(Seat.MIN_ROW + index);
     }
 
-    private static int indexToNumber(int index) {
+    private /*@ helper @*/ static int indexToNumber(int index) {
         return index + Seat.MIN_NUMBER;
     }
     
 }
+
