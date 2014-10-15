@@ -2,6 +2,7 @@ package bookings;
 
 public class SeatReservationManager {
 
+	//@ invariant seatReservations != null;
     private final Customer[][] seatReservations;
     
     public SeatReservationManager() {
