@@ -85,11 +85,11 @@ public class SeatReservationManager {
         return result;
     }
 
-    private static int rowToIndex(char row) {
+    private /*@ helper */ static int rowToIndex(char row) {
         return row - Seat.MIN_ROW;
     }
     
-    private static int numberToIndex(int number) {
+    private /*@ helper */ static int numberToIndex(int number) {
         return number - Seat.MIN_NUMBER;
     }
     
