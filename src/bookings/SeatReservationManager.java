@@ -1,21 +1,24 @@
-
+package bookings;
 
 public class SeatReservationManager {
 
-	//@ invariant seatReservations != null;
+	/*@ invariant seatReservations != null &&
+		 (\forall int i; 0 <= i && i < seatReservations.length;
+				seatReservations[i] != null);
+	@*/
     private final Customer[][] seatReservations;
     
     public SeatReservationManager() {
         seatReservations = new Customer[rowToIndex(Seat.MAX_ROW) + 1]
-                                       [numberToIndex(Seat.MAX_NUMBER) + 1];
+                                      	[numberToIndex(Seat.MAX_NUMBER) + 1];
     }
     
-    public boolean isReserved(/*@non_null*/Seat s) {
+    public boolean isReserved(/*@non_null*/ Seat s) {
         return seatReservations[rowToIndex(s.getRow())]
-                               [numberToIndex(s.getNumber())] != null;
+        						[numberToIndex(s.getNumber())] != null;
     }
 	
-    public void reserve(/*@non_null*/Seat s, Customer c) 
+    public void reserve(/*@non_null*/ Seat s, Customer c) 
             throws ReservationException {
         if(isReserved(s)) {
             throw new ReservationException();
@@ -24,7 +27,7 @@ public class SeatReservationManager {
                         [numberToIndex(s.getNumber())] = c;
     }
 
-    public void unreserve(/*@non_null*/Seat s)
+    public void unreserve(/*@non_null*/ Seat s)
             throws ReservationException {
         if(!isReserved(s)) {
             throw new ReservationException();
@@ -86,15 +89,15 @@ public class SeatReservationManager {
         return row - Seat.MIN_ROW;
     }
     
-    private /*@ helper @*/ static int numberToIndex(int number) {
+    private static int numberToIndex(int number) {
         return number - Seat.MIN_NUMBER;
     }
     
-    private /*@ helper @*/ static char indexToRow(int index) {
+    private static char indexToRow(int index) {
         return (char)(Seat.MIN_ROW + index);
     }
 
-    private /*@ helper @*/ static int indexToNumber(int index) {
+    private static int indexToNumber(int index) {
         return index + Seat.MIN_NUMBER;
     }
     
