@@ -16,10 +16,9 @@ public class SeatReservationManager {
 		\elemtype(\typeof(seatReservations[i])) == \type(Customer));
 	@*/
 	
-	
     private final Customer[][] seatReservations;
     
-    public /*helper*/ SeatReservationManager() {
+    public SeatReservationManager() {
         seatReservations = new Customer[rowToIndex(Seat.MAX_ROW) + 1]
                                       	[numberToIndex(Seat.MAX_NUMBER) + 1];
     }
