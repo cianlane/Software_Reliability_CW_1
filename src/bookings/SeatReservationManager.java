@@ -38,7 +38,7 @@ public class SeatReservationManager {
 
     public void reserveNextFree(Customer c) throws ReservationException {
         for(int rowIndex = 0; rowIndex < seatReservations.length; rowIndex++) {
-            for(int numberIndex = 0; 
+        	for(int numberIndex = 0; 
                     numberIndex < seatReservations[rowIndex].length; 
                     numberIndex++) {
                 Seat current = new Seat(indexToRow(rowIndex), 
@@ -84,20 +84,24 @@ public class SeatReservationManager {
         //@ set toStringResult = result;
         return result;
     }
-
+    
+    //@ requires row >= Seat.MIN_ROW;
+    //@ ensures \result >= 0;
     private /*@ helper */ static int rowToIndex(char row) {
         return row - Seat.MIN_ROW;
     }
-    
+
+	//@ requires number >= Seat.MIN_NUMBER;
+    //@ ensures \result >= 0;
     private /*@ helper */ static int numberToIndex(int number) {
         return number - Seat.MIN_NUMBER;
     }
     
-    private static char indexToRow(int index) {
+    private /*@ helper */ static char indexToRow(int index) {
         return (char)(Seat.MIN_ROW + index);
     }
-
-    private static int indexToNumber(int index) {
+    
+    private /*@ helper */ static int indexToNumber(int index) {
         return index + Seat.MIN_NUMBER;
     }
     
