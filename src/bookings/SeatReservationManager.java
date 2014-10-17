@@ -6,6 +6,12 @@ public class SeatReservationManager {
 		 (\forall int i; 0 <= i && i < seatReservations.length;
 				seatReservations[i] != null);
 	@*/
+	
+	/*@ invariant seatReservations.length == Seat.MAX_ROW - Seat.MIN_ROW + 1 &&
+	  	(\forall int i; 0 <= i && i < seatReservations.length;
+	  		seatReservations[i].length == Seat.MAX_NUMBER - Seat.MIN_NUMBER + 1);
+	@*/
+	
     private final Customer[][] seatReservations;
     
     public SeatReservationManager() {
@@ -85,14 +91,14 @@ public class SeatReservationManager {
         return result;
     }
     
-    //@ requires row >= Seat.MIN_ROW;
-    //@ ensures \result >= 0;
+    //@ requires row >= Seat.MIN_ROW && row <= Seat.MAX_ROW;
+    //@ ensures \result >= 0 && \result <= Seat.MAX_ROW - Seat.MIN_ROW;
     private /*@ helper */ static int rowToIndex(char row) {
         return row - Seat.MIN_ROW;
     }
 
-	//@ requires number >= Seat.MIN_NUMBER;
-    //@ ensures \result >= 0;
+	//@ requires number >= Seat.MIN_NUMBER && number <= Seat.MAX_NUMBER;
+    //@ ensures \result >= 0 && \result <= Seat.MAX_NUMBER - Seat.MIN_NUMBER;
     private /*@ helper */ static int numberToIndex(int number) {
         return number - Seat.MIN_NUMBER;
     }
