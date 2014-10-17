@@ -12,8 +12,11 @@ public class SeatReservationManager {
 	  		seatReservations[i].length == Seat.MAX_NUMBER - Seat.MIN_NUMBER + 1);
 	@*/
 	
+	 //@ invariant \elemtype(\typeof(seatReservations)) == \type(Customer);
+	
     private final Customer[][] seatReservations;
     
+    //@ ensures \elemtype(\typeof(seatReservations)) == \type(Customer);
     public SeatReservationManager() {
         seatReservations = new Customer[rowToIndex(Seat.MAX_ROW) + 1]
                                       	[numberToIndex(Seat.MAX_NUMBER) + 1];
@@ -24,6 +27,7 @@ public class SeatReservationManager {
         						[numberToIndex(s.getNumber())] != null;
     }
 	
+    //@ requires \elemtype(\typeof(seatReservations)) == \type(Customer);
     public void reserve(/*@non_null*/ Seat s, Customer c) 
             throws ReservationException {
         if(isReserved(s)) {
@@ -42,6 +46,7 @@ public class SeatReservationManager {
                         [numberToIndex(s.getNumber())] = null;
     }
 
+	//@ requires  \typeof(c) == \elemtype(\typeof(this.seatReservations));
     public void reserveNextFree(Customer c) throws ReservationException {
         for(int rowIndex = 0; rowIndex < seatReservations.length; rowIndex++) {
         	for(int numberIndex = 0; 
