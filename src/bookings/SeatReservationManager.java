@@ -16,7 +16,6 @@ public class SeatReservationManager {
 		\elemtype(\typeof(seatReservations[i])) == \type(Customer));
 	@*/
 	
-	
     private final Customer[][] seatReservations;
     
     public SeatReservationManager() {
