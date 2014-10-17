@@ -67,6 +67,7 @@ public class SeatReservationManager {
         represents theString <- toStringResult;
     @*/
  
+    
     public String toString() {
 
         String result = " ";
@@ -112,6 +113,7 @@ public class SeatReservationManager {
         return (char)(Seat.MIN_ROW + index);
     }
     
+    //@ modifies \nothing
     private /*@ helper */ static int indexToNumber(int index) {
         return index + Seat.MIN_NUMBER;
     }
