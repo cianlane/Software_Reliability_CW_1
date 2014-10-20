@@ -28,8 +28,7 @@ public class SeatReservationManager {
         						[numberToIndex(s.getNumber())] != null;
     }
 	
-    //@ requires \typeof(c) <: \type(Customer)
-    public void reserve(/*@non_null*/ Seat s, /*@non_null*/ Customer c) 
+    public void reserve(/*@non_null*/ Seat s, Customer c) 
             throws ReservationException {
         if(isReserved(s)) {
             throw new ReservationException();
@@ -47,7 +46,7 @@ public class SeatReservationManager {
                         [numberToIndex(s.getNumber())] = null;
     }
 
-    public void reserveNextFree(/*@non_null*/ Customer c) throws ReservationException {
+    public void reserveNextFree(Customer c) throws ReservationException {
         for(int rowIndex = 0; rowIndex < seatReservations.length; rowIndex++) {
         	for(int numberIndex = 0; 
                     numberIndex < seatReservations[rowIndex].length; 
