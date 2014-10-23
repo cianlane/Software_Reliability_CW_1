@@ -1,0 +1,244 @@
+Daikon version 4.6.4, released June 23, 2010; http://pag.csail.mit.edu/daikon.
+Reading declaration files [15:29:26]:                                                                                                                                                                                                                                  Processing trace data; reading 1 dtrace file:
+[15:29:27]: Reading SeatReservationDemo.dtrace.gz (line 101857, 9.03%) ...     
+No return from procedure observed 1 time.  Unmatched entries are ignored!
+Unterminated calls:
+  bookings.SeatReservationManager.reserve(bookings.Seat, bookings.Customer) : 1 invocation
+End of report for procedures not returned from.  Unmatched entries are ignored!
+[15:29:28]: Finished reading SeatReservationDemo.dtrace.gz                     
+                                                                                                                                                              ===========================================================================
+bookings.Customer:::OBJECT
+===========================================================================
+bookings.Customer.Customer():::EXIT
+===========================================================================
+bookings.ReservationException:::OBJECT
+this has only one value
+===========================================================================
+bookings.ReservationException.ReservationException():::EXIT
+===========================================================================
+bookings.Seat:::CLASS
+===========================================================================
+bookings.Seat:::OBJECT
+this.number >= 1
+bookings.Seat.MIN_ROW <= this.row
+bookings.Seat.MIN_ROW > this.number
+bookings.Seat.MAX_ROW >= this.row
+bookings.Seat.MAX_ROW > this.number
+bookings.Seat.MIN_NUMBER < this.row
+bookings.Seat.MIN_NUMBER <= this.number
+bookings.Seat.MAX_NUMBER < this.row
+bookings.Seat.MAX_NUMBER >= this.number
+this.row > this.number
+===========================================================================
+bookings.Seat.Seat(char, int):::ENTER
+arg1 >= 1
+arg0 > arg1
+===========================================================================
+bookings.Seat.Seat(char, int):::EXIT
+this.row == orig(arg0)
+this.number == orig(arg1)
+===========================================================================
+bookings.Seat.getNumber():::ENTER
+===========================================================================
+bookings.Seat.getNumber():::EXIT
+this.row == orig(this.row)
+this.number == return
+return == orig(this.number)
+return >= 1
+bookings.Seat.MIN_ROW > return
+bookings.Seat.MAX_ROW > return
+bookings.Seat.MIN_NUMBER <= return
+bookings.Seat.MAX_NUMBER >= return
+this.row > return
+===========================================================================
+bookings.Seat.getRow():::ENTER
+===========================================================================
+bookings.Seat.getRow():::EXIT
+this.row == return
+this.number == orig(this.number)
+return == orig(this.row)
+bookings.Seat.MIN_ROW <= return
+bookings.Seat.MAX_ROW >= return
+bookings.Seat.MIN_NUMBER < return
+bookings.Seat.MAX_NUMBER < return
+this.number < return
+===========================================================================
+bookings.SeatReservationDemo.main(java.lang.String[]):::ENTER
+arg0 has only one value
+arg0.getClass() == java.lang.String[].class
+arg0[] == []
+arg0[].toString == []
+===========================================================================
+bookings.SeatReservationDemo.main(java.lang.String[]):::EXIT
+arg0[] == orig(arg0[])
+arg0[] == []
+arg0[].toString == []
+===========================================================================
+bookings.SeatReservationManager:::OBJECT
+this has only one value
+this.seatReservations has only one value
+this.seatReservations != null
+this.seatReservations.getClass() == bookings.Customer[][].class
+this.seatReservations[] contains no nulls and has only one value, of length 7
+this.seatReservations[] elements != null
+size(this.seatReservations[]) == 7
+===========================================================================
+bookings.SeatReservationManager.SeatReservationManager():::EXIT
+===========================================================================
+bookings.SeatReservationManager.indexToNumber(int):::ENTER
+arg0 >= 0
+===========================================================================
+bookings.SeatReservationManager.indexToNumber(int):::EXIT
+return >= 1
+return - orig(arg0) - 1 == 0
+===========================================================================
+bookings.SeatReservationManager.indexToRow(int):::ENTER
+arg0 >= 0
+===========================================================================
+bookings.SeatReservationManager.indexToRow(int):::EXIT
+return - orig(arg0) - 65 == 0
+===========================================================================
+bookings.SeatReservationManager.isReserved(bookings.Seat):::ENTER
+arg0 != null
+arg0.number >= 1
+this.seatReservations[bookings.Seat.MIN_NUMBER] has only one value
+this.seatReservations[bookings.Seat.MIN_NUMBER-1] has only one value
+bookings.Seat.MIN_ROW <= arg0.row
+bookings.Seat.MIN_ROW > arg0.number
+bookings.Seat.MAX_ROW >= arg0.row
+bookings.Seat.MAX_ROW > arg0.number
+bookings.Seat.MIN_NUMBER < arg0.row
+bookings.Seat.MIN_NUMBER <= arg0.number
+bookings.Seat.MAX_NUMBER < arg0.row
+bookings.Seat.MAX_NUMBER >= arg0.number
+arg0.row > arg0.number
+arg0.row > size(this.seatReservations[])
+===========================================================================
+bookings.SeatReservationManager.isReserved(bookings.Seat):::EXIT
+this.seatReservations == orig(this.seatReservations)
+this.seatReservations[] == orig(this.seatReservations[])
+arg0.row == orig(arg0.row)
+arg0.number == orig(arg0.number)
+arg0.number >= 1
+this.seatReservations[bookings.Seat.MIN_NUMBER] has only one value
+this.seatReservations[bookings.Seat.MIN_NUMBER-1] has only one value
+this.seatReservations.getClass() == orig(this.seatReservations.getClass())
+bookings.Seat.MIN_ROW <= arg0.row
+bookings.Seat.MIN_ROW > arg0.number
+bookings.Seat.MAX_ROW >= arg0.row
+bookings.Seat.MAX_ROW > arg0.number
+bookings.Seat.MIN_NUMBER < arg0.row
+bookings.Seat.MIN_NUMBER <= arg0.number
+bookings.Seat.MAX_NUMBER < arg0.row
+bookings.Seat.MAX_NUMBER >= arg0.number
+arg0.row > arg0.number
+arg0.row > size(this.seatReservations[])
+===========================================================================
+bookings.SeatReservationManager.isReserved(bookings.Seat):::EXIT;condition="return == true"
+return == true
+===========================================================================
+bookings.SeatReservationManager.isReserved(bookings.Seat):::EXIT;condition="not(return == true)"
+return == false
+===========================================================================
+bookings.SeatReservationManager.numberToIndex(int):::ENTER
+arg0 >= 1
+===========================================================================
+bookings.SeatReservationManager.numberToIndex(int):::EXIT
+return >= 0
+return - orig(arg0) + 1 == 0
+===========================================================================
+bookings.SeatReservationManager.reserve(bookings.Seat, bookings.Customer):::ENTER
+arg0 != null
+arg0.number >= 1
+arg1 != null
+this.seatReservations[bookings.Seat.MIN_NUMBER] has only one value
+this.seatReservations[bookings.Seat.MIN_NUMBER-1] has only one value
+bookings.Seat.MIN_ROW <= arg0.row
+bookings.Seat.MIN_ROW > arg0.number
+bookings.Seat.MAX_ROW >= arg0.row
+bookings.Seat.MAX_ROW > arg0.number
+bookings.Seat.MIN_NUMBER < arg0.row
+bookings.Seat.MIN_NUMBER <= arg0.number
+bookings.Seat.MAX_NUMBER < arg0.row
+bookings.Seat.MAX_NUMBER >= arg0.number
+arg0.row > arg0.number
+arg0.row > size(this.seatReservations[])
+===========================================================================
+bookings.SeatReservationManager.reserve(bookings.Seat, bookings.Customer):::EXIT
+this.seatReservations == orig(this.seatReservations)
+this.seatReservations[] == orig(this.seatReservations[])
+arg0.row == orig(arg0.row)
+arg0.number == orig(arg0.number)
+arg0.number >= 1
+this.seatReservations[bookings.Seat.MIN_NUMBER] has only one value
+this.seatReservations[bookings.Seat.MIN_NUMBER-1] has only one value
+this.seatReservations.getClass() == orig(this.seatReservations.getClass())
+bookings.Seat.MIN_ROW <= arg0.row
+bookings.Seat.MIN_ROW > arg0.number
+bookings.Seat.MAX_ROW >= arg0.row
+bookings.Seat.MAX_ROW > arg0.number
+bookings.Seat.MIN_NUMBER < arg0.row
+bookings.Seat.MIN_NUMBER <= arg0.number
+bookings.Seat.MAX_NUMBER < arg0.row
+bookings.Seat.MAX_NUMBER >= arg0.number
+arg0.row > arg0.number
+arg0.row > size(this.seatReservations[])
+===========================================================================
+bookings.SeatReservationManager.reserveNextFree(bookings.Customer):::ENTER
+arg0 != null
+===========================================================================
+bookings.SeatReservationManager.reserveNextFree(bookings.Customer):::EXIT
+this.seatReservations == orig(this.seatReservations)
+this.seatReservations[] == orig(this.seatReservations[])
+this.seatReservations.getClass() == orig(this.seatReservations.getClass())
+===========================================================================
+bookings.SeatReservationManager.rowToIndex(char):::ENTER
+===========================================================================
+bookings.SeatReservationManager.rowToIndex(char):::EXIT
+return >= 0
+return - orig(arg0) + 65 == 0
+===========================================================================
+bookings.SeatReservationManager.toString():::ENTER
+===========================================================================
+bookings.SeatReservationManager.toString():::EXIT
+this.seatReservations == orig(this.seatReservations)
+this.seatReservations[] == orig(this.seatReservations[])
+return.toString one of { "  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20\nA                   X  X                       X  X\nB                   X  X                       X  X\nC X X X X X X X X X X  X  X  X  X  X  X  X  X  X  X\nD                   X  X                       X  X\nE                   X  X                       X  X\nF X X X X X X X X X X  X  X  X  X  X  X  X  X  X  X\nG                   X  X                       X  X\n", "  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20\nA X X X X X X X X X       X  X  X  X  X  X  X      \nB X X X X X X X X X       X  X  X  X  X  X  X      \nC                                                  \nD X X X X X X X X X       X  X  X  X  X  X  X      \nE X X X X X X X X X       X  X  X  X  X  X  X      \nF                                                  \nG X X X X X X X X X       X  X  X  X  X  X  X      \n", "  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20\nA X X X X X X X X X X  X  X  X  X  X  X  X  X  X  X\nB X X X X X X X X X X  X  X  X  X  X  X  X  X  X  X\nC X X X X X X X X X X  X  X  X  X  X  X  X  X  X  X\nD X X X X X X X X X X  X  X  X  X  X  X  X  X  X  X\nE X X X X X X X X X X  X  X  X  X  X  X  X  X  X  X\nF X X X X X X X X X X  X  X  X  X  X  X  X  X  X  X\nG X X X X X X X X X X  X  X  X  X  X  X  X  X  X  X\n" }
+this.seatReservations.getClass() == orig(this.seatReservations.getClass())
+===========================================================================
+bookings.SeatReservationManager.unreserve(bookings.Seat):::ENTER
+arg0 != null
+arg0.number >= 1
+this.seatReservations[bookings.Seat.MIN_NUMBER] has only one value
+this.seatReservations[bookings.Seat.MIN_NUMBER-1] has only one value
+bookings.Seat.MIN_ROW <= arg0.row
+bookings.Seat.MIN_ROW > arg0.number
+bookings.Seat.MAX_ROW >= arg0.row
+bookings.Seat.MAX_ROW > arg0.number
+bookings.Seat.MIN_NUMBER < arg0.row
+bookings.Seat.MIN_NUMBER <= arg0.number
+bookings.Seat.MAX_NUMBER < arg0.row
+bookings.Seat.MAX_NUMBER > arg0.number
+arg0.row > arg0.number
+arg0.row > size(this.seatReservations[])
+===========================================================================
+bookings.SeatReservationManager.unreserve(bookings.Seat):::EXIT
+this.seatReservations == orig(this.seatReservations)
+this.seatReservations[] == orig(this.seatReservations[])
+arg0.row == orig(arg0.row)
+arg0.number == orig(arg0.number)
+arg0.number >= 1
+this.seatReservations[bookings.Seat.MIN_NUMBER] has only one value
+this.seatReservations[bookings.Seat.MIN_NUMBER-1] has only one value
+this.seatReservations.getClass() == orig(this.seatReservations.getClass())
+bookings.Seat.MIN_ROW <= arg0.row
+bookings.Seat.MIN_ROW > arg0.number
+bookings.Seat.MAX_ROW >= arg0.row
+bookings.Seat.MAX_ROW > arg0.number
+bookings.Seat.MIN_NUMBER < arg0.row
+bookings.Seat.MIN_NUMBER <= arg0.number
+bookings.Seat.MAX_NUMBER < arg0.row
+bookings.Seat.MAX_NUMBER > arg0.number
+arg0.row > arg0.number
+arg0.row > size(this.seatReservations[])
+Exiting Daikon.
